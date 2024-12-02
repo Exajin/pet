@@ -1,13 +1,9 @@
 <?php
 require_once("../../PDO-connect.php");
 
-// var_dump($_POST["id"]);
-// exit;
-
 if (!isset($_POST["id"])) {
     exit("請循正常管道進入此頁面");
 }
-
 
 $id = $_POST["id"];
 $name = $_POST["p_name"];
@@ -21,9 +17,6 @@ $sales = $_POST["p_sale"];
 $intro = $_POST["p_intro"];
 $updated_at = date("Y-m-d H:i:s");
 
-// print_r($ID);
-// echo $id, "<br>", $name, "<br>", $kind, "<br>", $type, "<br>", $age, "<br>",  $intro, "<br>", $updated_at;
-// exit;
 
 $sql = "UPDATE product, inventory
 SET product.name=:name,
@@ -56,7 +49,6 @@ if (isset($amounts)) {
                     "sale" => $sale,
                 ]
             );
-            // echo "新資料輸入成功";
         } catch (PDOException $e) {
             echo "預處理陳述式執行失敗！ <br/>";
             echo "Error: " . $e->getMessage() . "<br/>";
@@ -66,7 +58,6 @@ if (isset($amounts)) {
         $i++;
     }
 }
-// exit;
 
 
 $sql3 = "SELECT * 
@@ -91,19 +82,12 @@ try {
     $stmt3->execute(
         ["id" => $id]
     );
-
-    // echo "新資料輸入成功";
-    // $product = $stmt3->fetchAll(PDO::FETCH_ASSOC);
-    // echo "接收到的資料:<pre>";
-    // print_r($product);
-    // echo "</pre>";
 } catch (PDOException $e) {
     echo "預處理陳述式執行失敗！ <br/>";
     echo "Error: " . $e->getMessage() . "<br/>";
     $db_host = NULL;
     exit;
 }
-// exit;
 
 
 if (isset($_FILES["myFile"])) {
@@ -112,17 +96,11 @@ if (isset($_FILES["myFile"])) {
         echo ("未選擇圖片檔案上傳。");
     } else {
         for ($i = 0; $i < count($file["name"]); $i++) {
-            // echo "<pre>";
-            // print_r($file["name"][$i]);
-            // echo "</pre>";
-            // exit;
             if ($file["error"][$i] == 0) {
                 $j = $i + 1;
                 $imageName = date("Ymd") . $kind . $type . "($j)"; //這邊改變命名方式
                 $extension = pathinfo($file["name"][$i], PATHINFO_EXTENSION);
                 $imgs[] = "img/" . $imageName . ".$extension";
-                // echo ($file["tmp_name"][$i]);
-                // exit;
                 if (move_uploaded_file($file["tmp_name"][$i], "../{$imgs[$i]}")) {
                     echo "上傳成功<br>";
                 } else {
@@ -157,8 +135,5 @@ if (isset($_FILES["myFile"])) {
         }
     }
 };
-
-
-
 
 header("Location: ../PDO-productlist.php");

@@ -1,19 +1,16 @@
 <?php
 
-require_once ("../db_connect.php");
+require_once("../db_connect.php");
 
-$name=$_POST["name"];
-$email=$_POST["email"];
-$phone=$_POST["phone"];
-$now=date("Y-m-d H:i:s");
+$name = $_POST["name"];
+$email = $_POST["email"];
+$phone = $_POST["phone"];
+$now = date("Y-m-d H:i:s");
 
-// echo "$name,$phone,$email";
 
-$sql="INSERT INTO users (name, phone, email,created_at)
+$sql = "INSERT INTO users (name, phone, email,created_at)
     VALUES ('$name', '$phone', '$email','$now')";
 
-// echo $sql;
-// exit;
 
 if ($conn->query($sql) === TRUE) {
     $last_id = $conn->insert_id;

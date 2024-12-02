@@ -38,16 +38,11 @@ WHERE product.id=:id
 GROUP BY img.url
 ";
 
-// exit;
+
 
 $stmt = $db_host->prepare($sql);
 $stmt2 = $db_host->prepare($sql2);
 
-// if (isset($_GET["id"])) {
-//     $stmt->bindParam(":id", $id);
-//     $stmt2->bindParam(":id", $id);
-// }
-// exit;
 try {
     $stmt->execute(
         [
@@ -57,11 +52,6 @@ try {
     $product = $stmt->fetchAll(PDO::FETCH_ASSOC);
     $productCount = $stmt->rowCount();
 
-    // echo "接收到的資料：<pre>";
-    // print_r($product);
-    // // print_r($productCount);
-    // echo "</pre>";
-
     $stmt2->execute(
         [
             "id" => $id
@@ -69,18 +59,13 @@ try {
     );
     $img = $stmt2->fetchAll(PDO::FETCH_ASSOC);
     $imgCount = $stmt2->rowCount();
-
-    // echo "接收到的資料：<pre>";
-    // print_r($imgCount);
-    // echo "</pre>";
 } catch (PDOException $e) {
     echo "預處理陳述式執行失敗！ <br/>";
     echo "Error: " . $e->getMessage() . "<br/>";
     $db_host = NULL;
-    // exit;
 }
 
-// exit;
+
 
 $db_host = NULL;
 ?>
@@ -89,7 +74,7 @@ $db_host = NULL;
 
 <head>
     <title>商品資料</title>
-    <!-- Required meta tags -->
+
     <meta charset="utf-8" />
     <meta
         name="viewport"
@@ -176,10 +161,6 @@ $db_host = NULL;
                                 <?= $product[0]["p_age"] ?>
                             </th>
                         </tr>
-                        <!-- <tr>
-                        <th>適用寵物性別</th>
-                        <th></th>
-                    </tr> -->
                         <tr>
                             <th>尺寸</th>
                             <th>
@@ -247,7 +228,6 @@ $db_host = NULL;
                 mainPic.alt = this.children[0].alt;
             });
         }
-        //   boxes.addEventListener("click", function () {});
     </script>
 </body>
 

@@ -1,18 +1,5 @@
 <?php
 require_once "../PDO-connect.php";
-// exit;
-
-// $cateSql = "SELECT * FROM category";
-// $resultCate = $conn->query($cateSql);
-// $categories = $resultCate->fetch_all(MYSQLI_ASSOC);
-
-// $categoryArr = [];
-// foreach ($categories as $category) {
-//     $categoryArr[$category["id"]] = $category["name"];
-// }
-// var_dump($categoryArr);
-
-
 
 $whereClause = "WHERE product.is_deleted=0";
 if (isset($_GET["min"]) && isset($_GET["max"])) {
@@ -20,13 +7,6 @@ if (isset($_GET["min"]) && isset($_GET["max"])) {
     $max = $_GET["max"];
     $whereClause = "WHERE inventory.price BETWEEN :min AND :max AND product.is_deleted=0";
 }
-// else if (isset($_GET["category"])) {
-//     $category_id = $_GET["category"];
-//     $whereClause = "WHERE product.category_id=$category_id";
-// }
-
-// echo $min, $max;
-// exit;
 
 $sql = "SELECT product.*,
 product.id AS p_id,
@@ -47,39 +27,26 @@ $whereClause
 GROUP BY product.id
 ";
 
-// exit;
 
 $stmt = $db_host->prepare($sql);
 
-// exit;
+
 
 if (isset($_GET["min"]) && isset($_GET["max"])) {
     $stmt->bindParam(":min", $min, PDO::PARAM_INT);
     $stmt->bindParam(":max", $max, PDO::PARAM_INT);
 }
 
-// echo $min, $max;
-// exit;
 
 try {
     $stmt->execute();
     $products = $stmt->fetchAll(PDO::FETCH_ASSOC);
     $productCount = $stmt->rowCount();
-
-    // echo "接收到的資料：<pre>";
-    // print_r($products);
-    // echo "</pre>";
-    // foreach ($products as $product) {
-    //     echo "<div>" . $products["product_img"] . "</div>";
-    // }
 } catch (PDOException $e) {
     echo "預處理陳述式執行失敗！ <br/>";
     echo "Error: " . $e->getMessage() . "<br/>";
     $db_host = NULL;
-    // exit;
 }
-
-// exit;
 
 
 $db_host = NULL;
@@ -142,7 +109,6 @@ $db_host = NULL;
                     <td class="text-nowrap col">一般售價</td>
                     <td class="text-nowrap col">上架狀態</td>
                     <td class="text-nowrap col">更新日期</td>
-                    <!-- <td>商品狀態</td> -->
                     <td class="text-nowrap col-3">操作</td>
                 </tr>
             </thead>

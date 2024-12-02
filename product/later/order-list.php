@@ -19,7 +19,6 @@ if (isset($_GET["product"])) {
 if (isset($_GET["start"]) && isset($_GET["end"])) {
     $start = $_GET["start"];
     $end = $_GET["end"];
-    // $whereClause = "WHERE order_date>=$start and price<=$end";
     $whereClause = "WHERE user_order.order_date BETWEEN '$start' AND '$end'";
 }
 $sql = "SELECT user_order.*,product.name AS product_name,product.price ,users.name  AS user_name  
@@ -36,22 +35,10 @@ $rows = $result->fetch_all(MYSQLI_ASSOC);
 
 if (isset($_GET["user"])) {
     $titleType = $rows[0]["user_name"];
-
-    // $nameArr = [];
-    // foreach ($rows as $username) {
-    //     // var_dump($username["user_id"]);
-    //     $nameArr[$username["user_id"]] = $username["user_name"];
-    // }
-    // // var_dump($nameArr);
-    // $titleType = $nameArr[$username["user_id"]];
 }
 if (isset($_GET["product"])) {
     $titleType = $rows[0]["product_name"];
 }
-// if (isset($_GET["start"]) && isset($_GET["end"])) {
-//     $titleType = "$start ~ $end";
-// }
-
 $title = "$titleType 訂單列表";
 
 ?>
@@ -61,7 +48,6 @@ $title = "$titleType 訂單列表";
 
 <head>
     <title><?= $title ?></title>
-    <!-- Required meta tags -->
     <meta charset="utf-8" />
     <meta
         name="viewport"

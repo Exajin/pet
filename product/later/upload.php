@@ -3,13 +3,11 @@
 
 <head>
     <title>upload</title>
-    <!-- Required meta tags -->
     <meta charset="utf-8" />
     <meta
         name="viewport"
         content="width=device-width, initial-scale=1, shrink-to-fit=no" />
 
-    <!-- Bootstrap CSS v5.2.1 -->
     <link
         href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
         rel="stylesheet"
@@ -25,39 +23,6 @@
                 border: solid 1px #000;
             }
         }
-
-
-        /* .content {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 10px;
-        }
-
-        .image-wrapper {
-            position: relative;
-            display: inline-block;
-        }
-
-        .image-wrapper img {
-            max-width: 150px;
-            max-height: 150px;
-            border: 1px solid #ddd;
-            border-radius: 5px;
-        }
-
-        .image-wrapper .delete-button {
-            position: absolute;
-            top: 5px;
-            right: 5px;
-            background-color: red;
-            color: white;
-            border: none;
-            border-radius: 50%;
-            cursor: pointer;
-            font-size: 12px;
-            width: 25px;
-            height: 25px;
-        } */
     </style>
 </head>
 
@@ -110,88 +75,6 @@
             }
         }
     });
-
-    // var img = content.querySelectorAll("img");
-    // img[i].addEventListener("click", e => {
-    //     console.log(i);
-    //     console.log(files);
-    //     // newFiles = files.splice(i, 1);
-    //     // e.currentTarget.files[i].remove();
-    //     // img[i].remove();
-    //     console.log(newFiles);
-    // })
 </script>
 
 </html>
-
-
-<!-- input_file.addEventListener("change", e => {
-        console.log(e.target.files);
-        const files = Array.from(e.target.files);
-        console.log(files);
-        files.forEach(file => {
-            upload.push(file);
-            display(file);
-        });
-        input_file.value = '';
-    });
-
-    function display(file) {
-        const reader = new FileReader();
-
-        reader.onload = (e) => {
-            // 創建圖片容器
-            content.classList.add('image-wrapper');
-
-            // 創建圖片元素
-            const img = document.createElement('img');
-            img.src = e.target.result;
-            img.alt = file.name;
-
-            // 創建刪除按鈕
-            const deleteButton = document.createElement('button');
-            deleteButton.textContent = 'Delete';
-            deleteButton.classList.add('delete-button');
-
-            // 點擊刪除圖片
-            deleteButton.addEventListener('click', () => {
-                const index = upload.indexOf(file);
-                if (index > -1) {
-                    upload.splice(index, 1); // 從清單中移除
-                }
-                content.remove(); // 從畫面上移除
-            });
-
-            // 將圖片和按鈕添加到容器
-            content.appendChild(img);
-            content.appendChild(deleteButton);
-        };
-
-        reader.readAsDataURL(file);
-    }
-
-    // 攔截表單提交
-    form.addEventListener('submit', (event) => {
-        event.preventDefault(); // 阻止默認表單提交行為
-
-        const formData = new FormData();
-
-        // 將剩餘的檔案添加到 FormData
-        upload.forEach(file => {
-            formData.append('file', file);
-        });
-
-        // 使用 Fetch 提交
-        fetch(uploadForm.action, {
-                method: 'POST',
-                body: formData,
-            })
-            .then(response => response.text())
-            .then(result => {
-                alert('Files uploaded successfully!');
-                console.log(result);
-            })
-            .catch(error => {
-                console.error('Error uploading files:', error);
-            });
-    }); -->

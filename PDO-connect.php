@@ -11,7 +11,6 @@ try {
         $username,
         $password
     );
-    // echo "資料庫連線成功";
 } catch (PDOException $e) {
     echo "資料庫連線失敗<br>";
     echo $e->getMessage();

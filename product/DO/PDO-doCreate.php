@@ -6,12 +6,6 @@ if (!isset($_POST["p_name"])) {
     header("Location: ../PDO-productlist.php");
 }
 
-
-// echo "<pre>";
-// print_r($file);
-// echo "</pre>";
-// exit;
-
 $name = $_POST["p_name"];
 $intro = $_POST["p_intro"];
 $time = date("Y-m-d H:i:s");
@@ -24,36 +18,15 @@ $sizes = $_POST["p_size"];
 $amounts = $_POST["p_amount"];
 $sales = $_POST["p_sale"];
 
-// echo $name, "<br>", $intro, "<br>", $time, "<br>",  $kind, "<br>", $type, "<br>", $age, "<br>", $price, "<br>";
-// echo "<pre>";
-// print_r($sizes);
-// echo "</pre>";
-// echo "<pre>";
-// print_r($sales);
-// echo "</pre>";
-// echo "<pre>";
-// print_r($amounts);
-// echo "</pre>";
-// // exit;
-// echo "<pre>";
-// print_r($_FILES["myFile"]);
-// echo "</pre>";
-// exit;
 
 if (isset($_FILES["myFile"])) {
     $file = $_FILES["myFile"];
     for ($i = 0; $i < count($file["name"]); $i++) {
-        // echo "<pre>";
-        // print_r($file["name"][$i]);
-        // echo "</pre>";
-        // exit;
         if ($file["error"][$i] == 0) {
             $j = $i + 1;
             $imageName = date("Ymd") . $kind . $type . "($j)"; //這邊改變命名方式
             $extension = pathinfo($file["name"][$i], PATHINFO_EXTENSION);
             $imgs[] = "img/" . $imageName . ".$extension";
-            // echo ($file["tmp_name"][$i]);
-            // exit;
             if (move_uploaded_file($file["tmp_name"][$i], "../{$imgs[$i]}")) {
                 echo "上傳成功<br>";
             } else {
@@ -67,13 +40,6 @@ if (isset($_FILES["myFile"])) {
 } else {
     $imgs[] = "img/nopic.jpg";
 };
-
-
-// echo "<pre>";
-// print_r($imgs);
-// echo "</pre>";
-// exit;
-
 
 
 $sql = "INSERT INTO product

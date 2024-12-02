@@ -45,7 +45,6 @@ try {
     echo "預處理陳述式執行失敗！ <br/>";
     echo "Error: " . $e->getMessage() . "<br/>";
     $db_host = NULL;
-    // exit;
 }
 
 
@@ -56,7 +55,6 @@ $db_host = NULL;
 
 <head>
     <title>新增商品資料</title>
-    <!-- Required meta tags -->
     <meta charset="utf-8" />
     <meta
         name="viewport"

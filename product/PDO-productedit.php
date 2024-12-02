@@ -59,10 +59,6 @@ FROM size
 ";
 
 
-
-
-// exit;
-
 $stmt = $db_host->prepare($sql);
 $stmt2 = $db_host->prepare($sql2);
 $stmt3 = $db_host->prepare($sql3);
@@ -73,24 +69,16 @@ if (isset($_GET["id"])) {
     $stmt->bindParam(":id", $id);
     $stmt2->bindParam(":id", $id);
 }
-// exit;
+
 try {
     $stmt->execute();
     $product = $stmt->fetchAll(PDO::FETCH_ASSOC);
     $productCount = $stmt->rowCount();
 
-    // echo "接收到的資料：<pre>";
-    // print_r($product);
-    // // print_r($productCount);
-    // echo "</pre>";
 
     $stmt2->execute();
     $img = $stmt2->fetchAll(PDO::FETCH_ASSOC);
     $imgCount = $stmt2->rowCount();
-
-    // echo "接收到的資料：<pre>";
-    // print_r($imgCount);
-    // echo "</pre>";
 
     $stmt3->execute();
     $kinds = $stmt3->fetchAll(PDO::FETCH_ASSOC);
@@ -112,10 +100,9 @@ try {
     echo "預處理陳述式執行失敗！ <br/>";
     echo "Error: " . $e->getMessage() . "<br/>";
     $db_host = NULL;
-    // exit;
 }
 
-// exit;
+
 
 $db_host = NULL;
 ?>
@@ -124,7 +111,7 @@ $db_host = NULL;
 
 <head>
     <title>編輯商品資料</title>
-    <!-- Required meta tags -->
+
     <meta charset="utf-8" />
     <meta
         name="viewport"
@@ -147,7 +134,7 @@ $db_host = NULL;
             img {
                 object-fit: cover;
                 width: 23%;
-                /* height: 100px; */
+
                 margin: 2.5px;
                 border: solid 1px #000;
 
@@ -281,10 +268,6 @@ $db_host = NULL;
                                     </select>
                                 </th>
                             </tr>
-                            <!-- <tr>
-                        <th>適用寵物性別</th>
-                        <th></th>
-                        </tr> -->
                             <tr>
                                 <th>尺寸</th>
                                 <th>
