@@ -120,7 +120,7 @@ foreach ($sizes as $size) {
 
 $i = 1;
 foreach ($imgs as $img) {
-    $sql3 = "INSERT INTO img (name,product_id,url,is_deleted) VALUES (:name,:product_id,:img,0)";
+    $sql3 = "INSERT INTO p_img (name,product_id,url,is_deleted) VALUES (:name,:product_id,:img,0)";
     $stmt3 = $db_host->prepare($sql3);
     try {
         $stmt3->execute(

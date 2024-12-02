@@ -114,7 +114,7 @@ if (isset($_FILES["myFile"])) {
 
         $k = 1;
         foreach ($imgs as $img) {
-            $sql4 = "INSERT INTO img (name,product_id,url,is_deleted) VALUES (:name,:id,:img,0)";
+            $sql4 = "INSERT INTO p_img (name,product_id,url,is_deleted) VALUES (:name,:id,:img,0)";
             $stmt4 = $db_host->prepare($sql4);
             try {
                 $stmt4->execute(

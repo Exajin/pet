@@ -33,11 +33,11 @@ GROUP BY inventory.productID
 ";
 
 $sql2 = "SELECT product.*,
-img.url AS p_img
+p_img.url AS p_img
 FROM product
-JOIN img ON product.id = img.product_id
+JOIN p_img ON product.id = p_img.product_id
 WHERE product.id=:id
-GROUP BY img.url
+GROUP BY p_img.url
 ";
 
 $sql3 = "SELECT kind.*

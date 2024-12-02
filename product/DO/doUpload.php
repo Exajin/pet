@@ -46,7 +46,7 @@ exit;
 
 $i = 1;
 foreach ($imgs as $img) {
-    $sql = "INSERT INTO img (name,product_id,url,is_deleted) VALUES (:name,:product_id,:img,0)";
+    $sql = "INSERT INTO p_img (name,product_id,url,is_deleted) VALUES (:name,:product_id,:img,0)";
     $stmt = $db_host->prepare($sql);
     try {
         $stmt->execute(

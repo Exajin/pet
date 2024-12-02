@@ -10,7 +10,7 @@ if (isset($_GET["min"]) && isset($_GET["max"])) {
 
 $sql = "SELECT product.*,
 product.id AS p_id,
-img.url AS p_img,
+p_img.url AS p_img,
 product.name AS p_name,
 kind.name AS p_kind,
 type.name AS p_type,
@@ -19,7 +19,7 @@ inventory.sale AS p_sale,
 inventory.amount AS p_amount,
 DATE(product.updated_at) AS p_updated_at
 FROM product 
-JOIN img ON product.id = img.product_id
+JOIN p_img ON product.id = p_img.product_id
 JOIN kind ON product.kind_id = kind.id
 JOIN type ON product.type_id = type.id
 JOIN inventory ON product.id = inventory.product_id
